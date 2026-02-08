@@ -14,7 +14,7 @@ columns = 3;
 rows = 2;
 
 // Optional rotation for the imported STL (degrees).
-stl_rotation = [0, 0, 0];
+stl_rotation = [90, 180, 90];
 
 // Extra spacing between the second and third grids (in mm).
 grid_gap_after_second = 5;
@@ -29,11 +29,11 @@ module stl_grid(path, size, cols, rows, rotation = [0, 0, 0]) {
 
 grid_size = [columns * stl_size[0], rows * stl_size[1]];
 
-translate([0, 0, 0])
+translate([0, 0, 18])
   stl_grid(stl_path_1, stl_size, columns, rows, stl_rotation);
 
-translate([grid_size[0], 0, 0])
+translate([grid_size[0], 0, 3.5])
   stl_grid(stl_path_2, stl_size, columns, rows, stl_rotation);
 
-translate([grid_size[0] * 2 + grid_gap_after_second, 0, 0])
+translate([grid_size[0] * 2 + grid_gap_after_second, 0, 9])
   stl_grid(stl_path_3, stl_size, columns, rows, stl_rotation);
